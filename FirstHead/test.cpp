@@ -8,6 +8,10 @@ struct test{
     int b=2;
 };
 
+int sum(int &c,int &d){
+    c=d;
+    return 0;
+}
 
 //int main(){
 //    test test1;
@@ -20,4 +24,14 @@ struct test{
 //    printf("%p\n",test2);
 //    printf("%p\n",&test1);
 //    printf("%p\n",c);
+//
+//    int f=1;
+//    int e=4;
+//    sum(f,e);
+//
+//    printf("%d",f);
+//
+//
+//
+//    return 0;
 //}

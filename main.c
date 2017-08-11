@@ -7,6 +7,5 @@
 //}
 
 char test(char *a){
-
     return a;
 }

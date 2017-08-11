@@ -4,18 +4,14 @@
 //
 #include <stdio.h>
 #include <cstdlib>
+#include "Sq.h"
 
-#define MaxSize 50
+//typedef int ElemType;
 
-typedef int ElemType;
 
-typedef struct SqList{
-    ElemType data[MaxSize];
-    int length;
-};
 
 //建立顺序表
-void CreateList(SqList * &L,ElemType a[],int n){
+void createList(SqList * &L,ElemType a[],int n){
     L=(SqList *)malloc(sizeof(SqList));
     for (int j = 0; j < n ; j++) {
         L->data[j]=a[j];
@@ -49,6 +45,7 @@ void showList(SqList *L){
     for(int i=0;i<L->length;i++){
         printf("%d ",L->data[i]);
     }
+    printf("\n");
 }
 
 //还是查找第ｉ个数是啥
@@ -63,8 +60,40 @@ bool getElem(SqList *L,int i,ElemType &e){
 //定位
 int locateElem(SqList *L, ElemType e){
     int index[MaxSize];
-    for(int i=0;i<L->length;i++){
-
+    int i=0;
+    while(i<L->length && L->data[i]!=e){
+        i++;
     }
-    return 0;
+    if(i>L->length){
+        return 0;
+    } else {
+        return i + 1;
+    }
 }
+
+//插入
+int insertElem(SqList *L,int i,ElemType e){
+    if(i<1 || i>L->length-1 || L->length==MaxSize-1){
+        return 0;
+    }
+    for(int j=L->length;j>i-1;j--){
+        L->data[j]=L->data[j-1];
+    }
+    L->data[i-1]=e;
+    L->length++;
+    return 1;
+}
+
+//删除元素
+int deleteElem(SqList *L,int i){
+    if(i<1 || i>L->length-1){
+        return 0;
+    }
+    for(int j=i;j<=L->length;j++){
+        L->data[j-1]=L->data[j];
+    }
+    L->length--;
+    return 1;
+}
+
+
