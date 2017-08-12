@@ -70,3 +70,23 @@ int moveNum(SqList *L){
     L->data[0]=temp;
     return 1;
 }
+
+//
+int move2(SqList *L){
+    int i=0,j=L->length;
+    int pivot=L->data[0];
+    while (i<j){
+        while(i<j && L->data[j]>pivot){
+            j--;
+        }
+        L->data[i]=L->data[j];
+        i++;
+        while (i<j && L->data[i]<=pivot){
+            i++;
+        }
+        L->data[j]=L->data[i];
+        j--;
+    }
+    L->data[i]=pivot;
+    return 1;
+}
