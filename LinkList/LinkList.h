@@ -13,10 +13,6 @@ typedef struct LNode{
     struct LNode *next;
 }LinkList;
 
-//双链表节点
-typedef struct Node{
-
-}DLinkList;
 
 void initLinkList(LinkList *&L);
 void createLinkF(LinkList *&L,ElemType a[],int n);

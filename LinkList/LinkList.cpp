@@ -144,3 +144,17 @@ bool deleteElem(LinkList *&L,int i,ElemType e){
     }
 
 }
+
+//循环链表
+int count(LinkList *L,ElemType e){
+    int n=0;
+    LinkList *q=L->next;
+    while (q!=L){
+        if(q->data==e){
+            n++;
+            q=q->next;
+        }
+    }
+    return n;
+}
+
