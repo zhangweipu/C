@@ -13,9 +13,24 @@ typedef struct LNode{
     struct LNode *next;
 }LinkList;
 
-
+/**
+ *
+ * @param L
+ */
 void initLinkList(LinkList *&L);
+/**
+ *
+ * @param L
+ * @param a
+ * @param n
+ */
 void createLinkF(LinkList *&L,ElemType a[],int n);
+/**
+ *
+ * @param L
+ * @param a
+ * @param n
+ */
 void createLinkR(LinkList *&L,int a[],int n);
 void destroyLinkList(LinkList *&L);
 bool emptyList(LinkList *L);
