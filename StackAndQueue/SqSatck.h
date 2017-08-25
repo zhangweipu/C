@@ -35,6 +35,18 @@ bool stackEmpty(SqStack *s);
  * @return
  */
 bool push(SqStack *&s,Element e);
+/**
+ *
+ * @param s
+ * @param e
+ * @return
+ */
 bool pop(SqStack *&s,Element &e);
+/**
+ *
+ * @param s
+ * @param e
+ * @return
+ */
 bool getTop(SqStack *s,Element &e);
 #endif //CLION_SQSATCK_H
