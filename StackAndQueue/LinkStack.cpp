@@ -70,6 +70,12 @@ bool pop(LinkStack *&s,ElemType &e){
     return true;
 }
 
+/**
+ *
+ * @param s
+ * @param e
+ * @return
+ */
 bool getTop(LinkStack *s,ElemType &e){
     if(s->next==NULL){
         return false;
@@ -77,3 +83,4 @@ bool getTop(LinkStack *s,ElemType &e){
     e=s->next->data;
     return true;
 }
+

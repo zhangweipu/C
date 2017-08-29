@@ -135,7 +135,7 @@ void fn(int n){
         printf("%d\n",F[i]);
     }
 }
-int main(){
-    fn(4);
-    return 0;
-}
+//int main(){
+//    fn(4);
+//    return 0;
+//}

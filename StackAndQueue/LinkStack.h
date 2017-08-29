@@ -6,7 +6,7 @@
 #ifndef CLION_STACK_H
 #define CLION_STACK_H
 
-typedef int ElemType;
+typedef char ElemType;
 
 typedef struct linkNode{
     ElemType data;
