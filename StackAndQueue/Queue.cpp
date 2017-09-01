@@ -80,7 +80,7 @@ bool deQueue(SqQueue *&q,ElemType &e){
     return true;
 }
 /**
- * 出队　０位置不存储数据
+ * 出队
  * @param q
  * @param e
  * @return
