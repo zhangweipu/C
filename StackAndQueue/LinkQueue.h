@@ -9,8 +9,15 @@
 
 typedef int ElemType;
 
-typedef struct QNode{
+//数据节点类型
+typedef struct qnode{
+    ElemType data;
+    struct qnode *next;
+}QNode;
 
-};
+typedef struct{
+    QNode *front;
+    QNode *rear;
+}LinkQueue;
 
 #endif //CLION_LINKQUEUE_H
