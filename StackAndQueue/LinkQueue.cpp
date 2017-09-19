@@ -21,7 +21,7 @@ void init(LinkQueue *&q){
  */
 void destroyQueue(LinkQueue *&q){
     QNode *p=q->front,*r;
-    if(p=!NULL){
+    if(p!=NULL){
         r=p->next;
         while (r!=NULL){
             free(p);

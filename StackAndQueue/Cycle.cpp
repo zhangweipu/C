@@ -18,7 +18,7 @@ typedef struct {
  *
  * @param q
  */
-void initQueue(SqQueue *&q){
+void initQueue3(SqQueue *&q){
     q=(SqQueue *)malloc(sizeof(SqQueue));
     q->front=0;
     q->count=0;
@@ -29,7 +29,7 @@ void initQueue(SqQueue *&q){
  *
  * @param q
  */
-void destoryQueue(SqQueue *&q){
+void destoryQueue3(SqQueue *&q){
     free(q);
 }
 
@@ -38,7 +38,7 @@ void destoryQueue(SqQueue *&q){
  * @param q
  * @return
  */
-bool EmptyQueue(SqQueue *q){
+bool EmptyQueue3(SqQueue *q){
     return q->count==0;
 }
 
@@ -48,7 +48,7 @@ bool EmptyQueue(SqQueue *q){
  * @param e
  * @return
  */
-bool enQueue(SqQueue *&q,ElemType e){
+bool enQueue3(SqQueue *&q,ElemType e){
     int rear;
     if(q->count==MaxSize){
         return false;
@@ -66,7 +66,7 @@ bool enQueue(SqQueue *&q,ElemType e){
  * @param e
  * @return
  */
-bool deQueue(SqQueue *&q,ElemType &e){
+bool deQueue3(SqQueue *&q,ElemType &e){
     if(q->count==0){
         return false;
     } else{

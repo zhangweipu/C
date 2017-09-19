@@ -15,7 +15,7 @@ typedef struct Node{
  *
  * @param q
  */
-void init(LNode *&q){
+void init2(LNode *&q){
     q=NULL;
 }
 
@@ -24,7 +24,7 @@ void init(LNode *&q){
  * @param rear
  * @param e
  */
-void enQueue(LNode *&rear,ElemType e){
+void enQueue2(LNode *&rear,ElemType e){
     LNode *p;
     p=(LNode *)malloc(sizeof(LNode));
     p->data=e;
@@ -44,7 +44,7 @@ void enQueue(LNode *&rear,ElemType e){
  * @param e
  * @return
  */
-bool deQueue(LNode *&rear,ElemType &e){
+bool deQueue2(LNode *&rear,ElemType &e){
     LNode *q;
     if(rear==NULL){
         return false;
@@ -66,6 +66,6 @@ bool deQueue(LNode *&rear,ElemType &e){
  * @param rear
  * @return
  */
-bool EmptyQueue(LNode *rear){
+bool EmptyQueue2(LNode *rear){
     return rear==NULL;
 }

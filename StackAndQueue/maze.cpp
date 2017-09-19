@@ -82,7 +82,7 @@ bool mgPath(int xi,int yi,int xe,int ye){
                     j=st.data[st.top].j-1;
                     break;
             }
-            if(mg[i][i]==0){
+            if(mg[i][j]==0){
                 find=1;
             }
         }
@@ -102,7 +102,7 @@ bool mgPath(int xi,int yi,int xe,int ye){
     return false;
 }
 
-int main(){
-    if(!mgPath(1,1,8,8));
-    printf("无解");
-}
+//int main(){
+//    if(!mgPath(1,1,8,8));
+//    printf("无解");
+//}
