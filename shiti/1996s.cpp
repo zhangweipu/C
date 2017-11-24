@@ -7,7 +7,7 @@
 
 #define MAX_SIZE 50
 
-typedef int Elem;
+typedef char Elem;
 
 typedef struct linkList{
     Elem data;
@@ -38,6 +38,15 @@ void showList(LinkList *L){
     q=L->next;
     while (q){
         printf("%d",q->data);
+        q=q->next;
+    }
+}
+
+void showList3(LinkList *L){
+    LinkList *q;
+    q=L->next;
+    while (q){
+        printf("%c",q->data);
         q=q->next;
     }
 }
@@ -119,16 +128,63 @@ void divideList(List *&L){
     }
 }
 
+void reverse(LinkList *&L1,LinkList *&L2){
 
+    LinkList *q,*p,*pre,*temp;
+    if(L1==NULL || L2==NULL) return;
+    pre=L1;
+    q=L1->next; p=L2->next;
+
+    while (q!=NULL){
+        while (q->next!=NULL && p->next!=NULL && q->data==p->data){
+            q=q->next;
+            p=p->next;
+        }
+        if(p->data==q->data){
+            break;
+        }
+        if(p->next==NULL || q->next==NULL){
+            break;
+        } else{
+            pre=pre->next;
+            q=pre->next;
+            p=L2->next;
+        }
+    }
+
+    LinkList *stack[MAX_SIZE];
+    int top=-1;
+    LinkList *s, *o=L2->next;
+    while (o!=NULL){
+        top++;
+        stack[top]=o;
+        o=o->next;
+        s=stack[top];
+        s->next=NULL;
+    }
+    if(p->next!=NULL){
+        printf("没有匹配的字符串");
+        return;
+    } else{
+        while(top != -1){
+        temp=stack[top];
+        temp->next=pre->next->next;
+        pre->next=temp;
+        pre=temp;
+            top--;
+        }
+    }
+
+}
 
 int main(){
     int a[]={1,2,4,5,2,1,4};
 
-    char c[]={'a','b','a','d','a'};
-    char d[]={'a','d','a'};
-    //delSubStr(c,d);
-    List *L;
-    createList2(a,L);
-    divideList(L);
-    showList2(L);
+    char c[]={'q','a','c','y','d','a','m','t','t'};
+    char d[]={'y','d','a'};
+    LinkList *L1,*L2;
+    createList(L1,c,9);
+    createList(L2,d,3);
+    reverse(L1,L2);
+    showList3(L1);
 }
