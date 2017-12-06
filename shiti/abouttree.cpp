@@ -52,7 +52,41 @@ BTNode initTree2(ElemType a[],int n){
 
 }
 
+BTNode *createTree(char *in,char *post,int n){
+    if(n<=0){
+        return NULL;
+    }
+    BTNode *b; int k;
+    b=(BTNode *)malloc(sizeof(BTNode));
+    char e,*p;
+    e=*(post+n-1);
+    b->data=e;
+    for(p=in;p<in+n-1;p++){
+        if(*p==e){
+            break;
+        }
+    }
+    k=p-in;
+    b->lchild=createTree(in,post,k);
+    b->rchild=createTree(p+1,post+k,n-k-1);
+    return b;
+}
 
-//int main(){
-//    printf("sss");
-//}
+void display(BTNode *b){
+    if(b==NULL){
+        return;
+    }
+    printf("%c",b->data);
+    display(b->lchild);
+    display(b->rchild);
+}
+
+int main(){
+    printf("sss");
+    char in[]="DBEAFIHCG";
+    char post[]="DEBHIFGCA";
+    BTNode *b;
+    b=createTree(in,post,9);
+
+    display(b);
+}

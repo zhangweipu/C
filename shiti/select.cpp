@@ -45,21 +45,21 @@ void delString(char *str1,char *str2){
 }
 
 
-int main(){
-//    int i=3,j=5,k,*r,*p,*q;
-//    *(p=&k)=*(r=&i)* *(q=&j);
-//    printf("%d",k);
-    char st1[]="aaddccffggaadd";
-    char st2[]="aa";
-    //delString(st1,st2);
-    int count=0;
-//    while (*a!='\0'){
-//        count++;
-//        a++;
-//    }
-//    printf("%d",strlen(st2));
-    delString(st1,st2);
-  for(int i=0;st1[i]!='\0';i++){
-      printf("%c",st1[i]);
-  }
-}
+//int main(){
+////    int i=3,j=5,k,*r,*p,*q;
+////    *(p=&k)=*(r=&i)* *(q=&j);
+////    printf("%d",k);
+//    char st1[]="aaddccffggaadd";
+//    char st2[]="aa";
+//    //delString(st1,st2);
+//    int count=0;
+////    while (*a!='\0'){
+////        count++;
+////        a++;
+////    }
+////    printf("%d",strlen(st2));
+//    delString(st1,st2);
+//  for(int i=0;st1[i]!='\0';i++){
+//      printf("%c",st1[i]);
+//  }
+//}
