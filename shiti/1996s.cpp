@@ -63,6 +63,37 @@ void createList2(Elem a[],List *&L){
     }
     L->length=i;
 }
+/**
+ * 创建环
+ * @param L
+ * @param a
+ */
+void createRing(LinkList *&L,Elem a[]){
+    L=(LinkList *)malloc(sizeof(LinkList));
+    L->next=NULL;
+    LinkList *q,*l;
+    q=L;
+    int i=0;
+    while (a[i]!='\0'){
+        l=(LinkList *)malloc(sizeof(LinkList));
+        l->data=a[i];
+        l->next=NULL;
+        q->next=l;
+        q=l;
+        i++;
+    }
+    q->next=L;
+}
+bool judgeRing(LinkList *L);
+void showRing(LinkList *L){
+    LinkList *p=L->next;
+    if(judgeRing(L)) {
+        while (p != L) {
+            printf("%c \t",p->data);
+            p=p->next;
+        }
+    }
+}
 
 void showList2(List *L){
     for (int i = 0; i <L->length ; i++) {
@@ -128,13 +159,16 @@ void divideList(List *&L){
     }
 }
 
+/**
+ * 匹配字符串
+ * @param L1
+ * @param L2
+ */
 void reverse(LinkList *&L1,LinkList *&L2){
-
     LinkList *q,*p,*pre,*temp;
     if(L1==NULL || L2==NULL) return;
     pre=L1;
     q=L1->next; p=L2->next;
-
     while (q!=NULL){
         while (q->next!=NULL && p->next!=NULL && q->data==p->data){
             q=q->next;
@@ -177,14 +211,57 @@ void reverse(LinkList *&L1,LinkList *&L2){
 
 }
 
-int main(){
-    int a[]={1,2,4,5,2,1,4};
-
-    char c[]={'q','a','c','y','d','a','m','t','t'};
-    char d[]={'y','d','a'};
-    LinkList *L1,*L2;
-    createList(L1,c,9);
-    createList(L2,d,3);
-    reverse(L1,L2);
-    showList3(L1);
+/**
+ * 将两个含头结点的单链表，合成一个带头结点的循环链表
+ * @param L1
+ * @param L2
+ * @return
+ */
+LinkList combineOne(LinkList *&L1,LinkList *&L2){
+    LinkList *l1,*l2;
+    l1=L1->next;
+    l2=L2->next;
+    while (l1){
+        l1=l1->next;
+    }
+    while (l2){
+        l1->next=l2;
+        l2=l2->next;
+    }
+    l2->next=L1;
+    free(L2);
 }
+
+/**
+ * 判断链表环
+ * @return
+ */
+bool judgeRing(LinkList *L){
+    LinkList *fast,*low;
+    if(L->next==L) return true;
+    fast=L->next;
+    low=L;
+    while (fast->next!=NULL && fast->next->next!=NULL && fast!=low){
+        fast=fast->next->next;
+        low=low->next;
+    }
+    if(fast==low){
+        printf("是环\n");
+        return true;
+    } else{
+        return false;
+    }
+}
+//int main(){
+//    int a[]={1,2,4,5,2,1,4};
+//
+//    char c[]={'q','a','c','y','d','a','m'};
+//    char d[]={'y','d','a'};
+//    LinkList *L1,*L2;
+//    createRing(L1,c);
+//   showRing(L1);
+//    createList(L2,c,7);
+//    if(judgeRing(L2)){
+//        printf("是环");
+//    }
+//}
