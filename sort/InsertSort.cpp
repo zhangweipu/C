@@ -2,7 +2,11 @@
 // Created by zwp on 17-10-22.
 //
 #include <stdio.h>
-
+/**
+ * 插入排序
+ * @param r
+ * @param n
+ */
 void insertSort(int r[],int n){
     int i,j;
     int tmp;
@@ -16,7 +20,11 @@ void insertSort(int r[],int n){
         r[j+1]=tmp;
     }
 }
-
+/**
+ * 二分插入排序
+ * @param R
+ * @param n
+ */
 void insertSort1(int R[],int n){
     int i,j,mid,low,high;
     int tmp;
@@ -39,6 +47,11 @@ void insertSort1(int R[],int n){
 
 }
 
+/**
+ * 希尔排序
+ * @param R
+ * @param n
+ */
 void shellSort(int R[],int n){
     int i,j,gap;
     int tmp;
@@ -58,7 +71,11 @@ void shellSort(int R[],int n){
     }
 }
 
-
+/**
+ * 冒泡排序
+ * @param a
+ * @param n
+ */
 void bubbleSort(int a[],int n){
     int i,j,tmp;
     for(i=0;i<n-1;i++){
@@ -72,7 +89,12 @@ void bubbleSort(int a[],int n){
     }
 }
 
-
+/**
+ * 快排
+ * @param a
+ * @param s
+ * @param t
+ */
 void quickSort(int a[],int s,int t){
     int i=s,j=t,tmp;
     if(s<t){
