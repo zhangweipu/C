@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <malloc.h>
-
+/**************/
+ /**数组**/
+ /************/
 /**
  * 在已排序数组中移除重复项，返回无重复数组的长度。
  * 数组：[1,2,3,4,4]
@@ -336,9 +338,9 @@ int singleNumber(int* nums, int numsSize) {
     }
     return head->data;
 }
-int main() {
-    int num[] = {4,1,2,1,2};
-    int s=singleNumber(num,5);
-    printf("%d",s);
-    return 0;
-}
+//int main() {
+//    int num[] = {4,1,2,1,2};
+//    int s=singleNumber(num,5);
+//    printf("%d",s);
+//    return 0;
+//}
