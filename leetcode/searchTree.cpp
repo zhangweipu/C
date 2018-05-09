@@ -58,7 +58,8 @@ bool isValidBST(struct TreeNode* root) {
 /**
  * 创建搜索二叉树
  * 当数组使用0为初始下标
- *使用递归进行创建，父和左子树的关系是2*i+1,和右子树的关系2*i+2
+ *使用递归进行创建，父和左子树的关系是2*i+1,和右子树的关系2*i+2 不可取，
+ * 还有空的情况，碰到空就麻烦了，只对数组不存在NULL的情况有效
  * @param nums 数组
  * @param numsSize 数组长度
  * @param i 下标
@@ -68,6 +69,12 @@ void createValidBST(int *nums,int numsSize,int i,Tree *&t){
     //判断是否越界
     if(!(i<numsSize)){
         return;
+    }
+    //判断数组存在NULL，并做处理,不会啊！！!!!!!
+    if(nums[i]==NULL && i%2==0){
+        createValidBST(nums,numsSize,i+2,t);
+    } else if(nums[i] == NULL && i%2 == 1){
+
     }
     t=(Tree *)malloc(sizeof(Tree));
     t->val=nums[i];
@@ -88,8 +95,13 @@ void preTree(Tree *t){
 }
 
 int main(){
-    int nums[]={1,2,3,4,5};
+    int nums[]={2,NULL,1,3};
     Tree *t;
-    createValidBST(nums,5,0,t);
+    createValidBST(nums,4,0,t);
+    if(isValidBST(t)){
+        printf("shi");
+    } else{
+        printf("bushi");
+    }
     preTree(t);
 }
