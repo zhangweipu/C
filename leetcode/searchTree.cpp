@@ -56,7 +56,7 @@ bool isValidBST(struct TreeNode* root) {
 }
 
 /**
- * 创建搜索二叉树
+ * todo:创建搜索二叉树
  * 当数组使用0为初始下标
  *使用递归进行创建，父和左子树的关系是2*i+1,和右子树的关系2*i+2 不可取，
  * 还有空的情况，碰到空就麻烦了，只对数组不存在NULL的情况有效
@@ -93,6 +93,93 @@ void preTree(Tree *t){
     preTree(t->left);
     preTree(t->right);
 }
+/**
+ * 实现一个map的数据结构
+ */
+typedef struct mapNode{
+    int key;
+    int value;
+    struct mapNode *next;
+}map;
+/**
+ * 求摩取余发，model=10
+ */
+typedef struct hashNode{
+    int len;
+    struct mapNode *node[9];
+}hashMap;
+
+/**
+ * 初始化map
+ * @param m
+ */
+void initMap(hashMap *&m){
+    m=(hashMap *)malloc(sizeof(hashMap));
+    for (int i = 0; i < 10; ++i) {
+        m->node[i]=NULL;
+    }
+}
+
+/**
+ *
+ * @param m
+ */
+void insertMap(int k,int v,hashMap *&m){
+    if(m==NULL){
+        return;
+    }
+    //尾插法
+    map *temp,*a=(map *)malloc(sizeof(map));
+    a->key=k;
+    a->value=v;
+    a->next=NULL;
+    int key=abs(k%10);
+    temp=m->node[key];
+    m->node[key]=a;
+    a->next=temp;
+}
+
+
+
+/**
+ * 查找是否c
+ * Definition for binary tree
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+struct BSTIterator {
+    int length;
+};
+
+struct BSTIterator *bstIteratorCreate(struct TreeNode *root) {
+
+}
+
+/** @return whether we have a next smallest number */
+bool bstIteratorHasNext(struct BSTIterator *iter) {
+
+}
+
+/** @return the next smallest number */
+int bstIteratorNext(struct BSTIterator *iter) {
+
+}
+
+/** Deallocates memory previously allocated for the iterator */
+void bstIteratorFree(struct BSTIterator *iter) {
+
+}
+
+/**
+ * Your BSTIterator will be called like this:
+ * struct BSTIterator *i = bstIteratorCreate(root);
+ * while (bstIteratorHasNext(i)) printf("%d\n", bstIteratorNext(i));
+ * bstIteratorFree(i);
+ */
+
 
 int main(){
     int nums[]={2,NULL,1,3};
