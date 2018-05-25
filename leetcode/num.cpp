@@ -338,9 +338,70 @@ int singleNumber(int* nums, int numsSize) {
     }
     return head->data;
 }
-//int main() {
-//    int num[] = {4,1,2,1,2};
-//    int s=singleNumber(num,5);
-//    printf("%d",s);
-//    return 0;
-//}
+
+/**
+ * 给定两个数组，写一个方法来计算它们的交集。
+ * 我准备用hash算法做做添加一个查找方法
+ * @param nums1
+ * @param nums1Size
+ * @param nums2
+ * @param nums2Size
+ * @param returnSize
+ * @return
+ */
+int* intersect(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize) {
+    returnSize=(int *)malloc(sizeof(int)*nums1Size);
+    hash *h=(hash *)malloc(sizeof(hash));
+    int *res=returnSize;
+    list *init;
+    //带头节点
+    for(int i=0;i<10;i++){
+        init=(list *)malloc(sizeof(list));
+        init->data=0;
+        init->next=NULL;
+        h->hash[i]=init;
+    }
+    //hash一下查找的快吧,要带头节点，比较好，但是头节点多少都可以
+    //一次声明用好多次,pre用作删除
+    list *l,*pre,*cur,*temp;
+    for(int i=0;i<nums1Size;i++){
+        int key=abs(nums1[i]%10);
+        l=(list *)malloc(sizeof(list));
+        l->data=nums1[i];
+        temp=h->hash[key]->next;
+        h->hash[key]->next=l;
+        l->next=temp;
+    }
+    int j=0;
+    //比较并移除
+    for(int i=0;i<nums2Size;i++){
+        int key=abs(nums2[i]%10);
+        pre=h->hash[key];
+        cur=h->hash[key]->next;
+
+            //匹配，然后移除
+            while (cur != NULL && nums2[i]!=cur->data){
+                pre->next=cur->next;
+                //free(cur);
+                cur=pre->next;
+            }
+            if(cur!=NULL && cur->data==nums2[i]){
+                *returnSize=nums2[i];
+                returnSize++;
+            }
+    }
+    return res;
+}
+
+
+int main() {
+    int num1[] = {1};
+    int num2[]={1};
+    int *r;
+    int *re=intersect(num1,1,num2,1,r);
+    for(int i=0;i<1;i++){
+        printf("%d",re[i]);
+    }
+    //printf("%d",s);
+    return 0;
+}

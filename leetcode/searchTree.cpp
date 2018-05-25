@@ -150,11 +150,17 @@ void insertMap(int k,int v,hashMap *&m){
  *     struct TreeNode *right;
  * };
  */
+ /**
+  * 使用栈实现二叉树的迭代怎么样
+  */
 struct BSTIterator {
-    int length;
+    int top;
+    struct TreeNode *stack[MAX_SIZE];
 };
 
 struct BSTIterator *bstIteratorCreate(struct TreeNode *root) {
+    BSTIterator *b=(BSTIterator*)malloc(sizeof(BSTIterator));
+    b->top=-1;
 
 }
 
@@ -181,14 +187,14 @@ void bstIteratorFree(struct BSTIterator *iter) {
  */
 
 
-int main(){
-    int nums[]={2,NULL,1,3};
-    Tree *t;
-    createValidBST(nums,4,0,t);
-    if(isValidBST(t)){
-        printf("shi");
-    } else{
-        printf("bushi");
-    }
-    preTree(t);
-}
+//int main(){
+//    int nums[]={2,NULL,1,3};
+//    Tree *t;
+//    createValidBST(nums,4,0,t);
+//    if(isValidBST(t)){
+//        printf("shi");
+//    } else{
+//        printf("bushi");
+//    }
+//    preTree(t);
+//}
